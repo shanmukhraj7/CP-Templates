@@ -105,6 +105,5 @@ int main() {
         total += dijkstra.dist[i];
     }
 
-    cout << total << endl;
-
+    cout << total << '\n';
 }
