@@ -58,7 +58,6 @@ struct Dijkstra {
         }
     }
 
-    // explain me this part - ChatGPT
     void dijkstra(const vector<int>& source) {
         if(n == 0) return;
         dist.assign(n, W_INF);
