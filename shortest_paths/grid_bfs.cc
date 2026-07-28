@@ -74,7 +74,7 @@ struct grid_bfs {
                 for(int dir = 0; dir < DIRS; dir++) {
                     int nr = r + DR[dir];
                     int nc = c + DC[dir];
-                    
+
                     // TODO: Check if movement from (r, c) to (nr, nc) is allowed.
                     if(valid(nr, nc)) {
                         // TODO: Determine whether this move costs 0 or 1.
