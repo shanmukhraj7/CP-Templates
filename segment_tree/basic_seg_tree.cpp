@@ -1,13 +1,14 @@
-# include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-# define int long long
-# define vi vector<int>
+#define int long long
+#define vi vector<int>
 
-class SGT{
-public:
+struct SGT {
+
     vi seg, lz;
-    SGT(int n){
+
+    SGT(int n) {
         seg.resize(4 * n + 5);
         // lz.resize(4 * n + 5, 0);
     }
@@ -22,40 +23,52 @@ public:
     //     lz[idx] = 0;
     // }
 
-    void build(int idx, int low, int high, vi& a){
-        if(low == high){
+    void build(int idx, int low, int high, vi &a) {
+        if (low == high) {
             seg[idx] = a[low];
             return;
         }
+
         int mid = low + ((high - low) >> 1);
+
         build(idx << 1, low, mid, a);
         build(idx << 1 | 1, mid + 1, high, a);
+
         seg[idx] = max(seg[idx << 1], seg[idx << 1 | 1]);
     }
 
-    void update(int idx, int low, int high, int ui, int uv){
+    void update(int idx, int low, int high, int ui, int uv) {
         // push(idx, low, high);
-        if(low == high){
+
+        if (low == high) {
             seg[idx] = uv;
             return;
         }
+
         int mid = low + ((high - low) >> 1);
-        if(ui <= mid){
+
+        if (ui <= mid)
             update(idx << 1, low, mid, ui, uv);
-        }
-        else{
+        else
             update(idx << 1 | 1, mid + 1, high, ui, uv);
-        }
-        seg[idx] =max(seg[idx << 1], seg[idx << 1 | 1]);
+
+        seg[idx] = max(seg[idx << 1], seg[idx << 1 | 1]);
     }
 
-    int query(int idx, int low, int high, int ql, int qr){
+    int query(int idx, int low, int high, int ql, int qr) {
         // push(idx, low, high);
-        if(qr < low || high < ql) return LLONG_MIN;
-        if(ql <= low && high <= qr) return seg[idx];
+
+        if (qr < low || high < ql)
+            return LLONG_MIN;
+
+        if (ql <= low && high <= qr)
+            return seg[idx];
+
         int mid = low + ((high - low) >> 1);
+
         int left = query(idx << 1, low, mid, ql, qr);
         int right = query(idx << 1 | 1, mid + 1, high, ql, qr);
+
         return max(left, right);
     }
 
@@ -72,4 +85,5 @@ public:
     //     lzyupdate(idx << 1 | 1, mid + 1, high, ql, qr, val);
     //     seg[idx] = max(seg[idx << 1], seg[idx << 1 | 1]);
     // }
+
 };
