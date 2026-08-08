@@ -1,12 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long
-#define vi vector<int>
-
 struct SGT {
 
-    vi seg, lz;
+    vector<int> seg, lz;
 
     SGT(int n) {
         seg.resize(4 * n + 5);
@@ -23,7 +20,7 @@ struct SGT {
     //     lz[idx] = 0;
     // }
 
-    void build(int idx, int low, int high, vi &a) {
+    void build(int idx, int low, int high, vector<int> &a) {
         if (low == high) {
             seg[idx] = a[low];
             return;
