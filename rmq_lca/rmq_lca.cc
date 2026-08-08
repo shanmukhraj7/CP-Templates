@@ -33,7 +33,7 @@ struct RMQ {
             range_low[k].resize(n - (1 << k) + 1);
         
         for(int i = 0; i < n; i++)
-            range_low[i][0] = i;
+            range_low[0][i] = i;
 
         for(int k = 1; k < levels; k++) {
             for(int i = 0; i <= n - (1 << k); i++) {
