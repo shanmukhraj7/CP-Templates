@@ -1,7 +1,7 @@
 # include <bits/stdc++.h>
 using namespace std;
 
-
+// Change this according to the Operation that is required
 struct Sum {
     int operator()(int a, int b) const {
         return a + b;
